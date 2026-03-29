@@ -68,7 +68,7 @@ export default function PortfolioSection() {
             Portfolio
           </span>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">
-            作品集
+            実績
           </h2>
         </div>
       </div>

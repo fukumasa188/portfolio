@@ -25,7 +25,7 @@ export async function sendContactEmail(
     await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
       to: 'fukuyoshi.dev@gmail.com',
-      subject: `【ポートフォリオ】${name}さんからのお問い合わせ`,
+      subject: `【お問い合わせ】${name}さんからのお問い合わせ`,
       replyTo: email,
       text: `名前: ${name}\nメール: ${email}\n\nメッセージ:\n${message}`,
     });
