@@ -1,11 +1,11 @@
 export const siteConfig = {
-  name: '山田 太郎',
-  title: 'クリエイティブデベロッパー',
+  name: '福吉 真之',
+  title: 'CEO / フルスタックデベロッパー',
   description:
-    'デザインとテクノロジーの交差点で、美しい体験を創造するクリエイティブデベロッパー。',
+    'スタートアップ経営者 × フルスタック開発。ビジネス課題を理解し、技術で解決する。',
   social: {
-    github: 'https://github.com',
-    twitter: 'https://twitter.com',
-    linkedin: 'https://linkedin.com',
+    github: 'https://github.com/fukumasa188',
+    facebook:
+      'https://www.facebook.com/profile.php?id=100056529784381',
   },
 };

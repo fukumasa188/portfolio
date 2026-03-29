@@ -61,6 +61,7 @@ export type CardStackProps<T extends CardStackItem> = {
 
   /** Hooks */
   onChangeIndex?: (index: number, item: T) => void;
+  onCardClick?: (item: T, rect: DOMRect) => void;
 
   /** Custom renderer (optional) */
   renderCard?: (item: T, state: { active: boolean }) => React.ReactNode;
@@ -112,6 +113,7 @@ export function CardStack<T extends CardStackItem>({
   className,
 
   onChangeIndex,
+  onCardClick,
   renderCard,
 }: CardStackProps<T>) {
   const reduceMotion = useReducedMotion();
@@ -306,7 +308,14 @@ export function CardStack<T extends CardStackItem>({
                     stiffness: springStiffness,
                     damping: springDamping,
                   }}
-                  onClick={() => setActive(i)}
+                  onClick={(e) => {
+                    if (isActive && onCardClick) {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      onCardClick(item, rect);
+                    } else {
+                      setActive(i);
+                    }
+                  }}
                   {...dragProps}
                 >
                   <div

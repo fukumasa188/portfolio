@@ -13,8 +13,8 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "ポートフォリオ | クリエイティブデベロッパー",
-  description: "クリエイティブデベロッパーのポートフォリオサイト",
+  title: "福吉 真之 | CEO / フルスタックデベロッパー",
+  description: "スタートアップ経営とフルスタック開発。AIアプリ・越境EC等の実績。",
 };
 
 export default function RootLayout({

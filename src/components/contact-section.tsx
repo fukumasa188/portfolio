@@ -46,7 +46,7 @@ export default function ContactSection() {
               </label>
               <Input
                 id="name"
-                placeholder="山田 太郎"
+                placeholder="お名前を入力"
                 required
               />
             </div>

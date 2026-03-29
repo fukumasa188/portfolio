@@ -1,4 +1,4 @@
-import { Code2, MessageCircle, Briefcase, ArrowUp } from 'lucide-react';
+import { Code2, ExternalLink, ArrowUp } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 
 export default function Footer() {
@@ -20,22 +20,13 @@ export default function Footer() {
             <Code2 className="w-5 h-5" />
           </a>
           <a
-            href={siteConfig.social.twitter}
+            href={siteConfig.social.facebook}
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="Twitter"
+            aria-label="Facebook"
           >
-            <MessageCircle className="w-5 h-5" />
-          </a>
-          <a
-            href={siteConfig.social.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="LinkedIn"
-          >
-            <Briefcase className="w-5 h-5" />
+            <ExternalLink className="w-5 h-5" />
           </a>
         </div>
 

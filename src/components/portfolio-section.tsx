@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { CardStack, CardStackItem } from '@/components/ui/card-stack';
-import { projects } from '@/data/projects';
+import { HeroExpandDialog, useHeroExpandDialog } from '@/components/ui/hero-expand-dialog';
+import { projects, Project } from '@/data/projects';
 
 const cardItems: CardStackItem[] = projects.map((p) => ({
   id: p.id,
@@ -38,6 +39,26 @@ function useCardDimensions() {
 
 export default function PortfolioSection() {
   const { width, height } = useCardDimensions();
+  const { selectedProject, cardRect, dialogOpen, open, close } = useHeroExpandDialog();
+
+  // Body scroll lock
+  useEffect(() => {
+    if (dialogOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [dialogOpen]);
+
+  const handleCardClick = (item: CardStackItem, rect: DOMRect) => {
+    const project = projects.find((p) => p.id === item.id);
+    if (project) {
+      open(project, rect);
+    }
+  };
 
   return (
     <section id="portfolio" className="w-full py-16 md:py-24">
@@ -65,8 +86,18 @@ export default function PortfolioSection() {
           maxVisible={5}
           overlap={width < 400 ? 0.55 : 0.48}
           spreadDeg={width < 400 ? 35 : 48}
+          onCardClick={handleCardClick}
         />
       </div>
+
+      {selectedProject && cardRect && (
+        <HeroExpandDialog
+          project={selectedProject}
+          cardRect={cardRect}
+          isOpen={dialogOpen}
+          onClose={close}
+        />
+      )}
     </section>
   );
 }
