@@ -1,16 +1,48 @@
 'use client';
 
-import React from 'react';
-import { RadialScrollGallery } from '@/components/ui/portfolio-and-image-gallery';
-import { ArrowUpRight } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { useEffect, useState } from 'react';
+import { CardStack, CardStackItem } from '@/components/ui/card-stack';
 import { projects } from '@/data/projects';
 
+const cardItems: CardStackItem[] = projects.map((p) => ({
+  id: p.id,
+  title: p.title,
+  description: p.category,
+  imageSrc: p.image,
+  href: p.url,
+  tag: p.category,
+}));
+
+function useCardDimensions() {
+  const [dims, setDims] = useState({ width: 480, height: 300 });
+
+  useEffect(() => {
+    const update = () => {
+      const vw = window.innerWidth;
+      if (vw < 480) {
+        const w = Math.min(vw - 48, 340);
+        setDims({ width: w, height: Math.round(w * 0.65) });
+      } else if (vw < 768) {
+        setDims({ width: 360, height: 240 });
+      } else {
+        setDims({ width: 480, height: 300 });
+      }
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  return dims;
+}
+
 export default function PortfolioSection() {
+  const { width, height } = useCardDimensions();
+
   return (
-    <section id="portfolio" className="w-full">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-16">
-        <div className="text-center space-y-2">
+    <section id="portfolio" className="w-full py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="text-center space-y-2 mb-8">
           <span className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
             Portfolio
           </span>
@@ -20,73 +52,21 @@ export default function PortfolioSection() {
         </div>
       </div>
 
-      <RadialScrollGallery
-        baseRadius={400}
-        mobileRadius={250}
-        visiblePercentage={50}
-        scrollDuration={2000}
-      >
-        {(hoveredIndex) =>
-          projects.map((project, index) => {
-            const isActive = hoveredIndex === index;
-            return (
-              <div
-                key={project.id}
-                className="group relative w-[200px] h-[280px] sm:w-[240px] sm:h-[320px] overflow-hidden rounded-xl bg-card border border-border shadow-lg"
-              >
-                <div className="absolute inset-0 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className={`h-full w-full object-cover transition-transform duration-700 ease-out ${
-                      isActive
-                        ? 'scale-110 blur-0'
-                        : 'scale-100 blur-[1px] grayscale-[30%]'
-                    }`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-60" />
-                </div>
-
-                <div className="absolute inset-0 flex flex-col justify-between p-4">
-                  <div className="flex justify-between items-start">
-                    <Badge
-                      variant="secondary"
-                      className="text-[10px] px-2 py-0 bg-background/80 backdrop-blur"
-                    >
-                      {project.category}
-                    </Badge>
-                    <div
-                      className={`w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center transition-all duration-500 ${
-                        isActive
-                          ? 'opacity-100 rotate-0'
-                          : 'opacity-0 -rotate-45'
-                      }`}
-                    >
-                      <ArrowUpRight size={12} />
-                    </div>
-                  </div>
-
-                  <div
-                    className={`transition-transform duration-500 ${
-                      isActive ? 'translate-y-0' : 'translate-y-2'
-                    }`}
-                  >
-                    <h3 className="text-xl font-bold leading-tight text-foreground">
-                      {project.title}
-                    </h3>
-                    <div
-                      className={`h-0.5 bg-primary mt-2 transition-all duration-500 ${
-                        isActive ? 'w-full opacity-100' : 'w-0 opacity-0'
-                      }`}
-                    />
-                  </div>
-                </div>
-              </div>
-            );
-          })
-        }
-      </RadialScrollGallery>
+      <div className="mx-auto w-full max-w-5xl px-4">
+        <CardStack
+          items={cardItems}
+          initialIndex={0}
+          autoAdvance
+          intervalMs={3000}
+          pauseOnHover
+          showDots
+          cardWidth={width}
+          cardHeight={height}
+          maxVisible={5}
+          overlap={width < 400 ? 0.55 : 0.48}
+          spreadDeg={width < 400 ? 35 : 48}
+        />
+      </div>
     </section>
   );
 }
