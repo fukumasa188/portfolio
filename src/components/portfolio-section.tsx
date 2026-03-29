@@ -78,7 +78,7 @@ export default function PortfolioSection() {
           items={cardItems}
           initialIndex={0}
           autoAdvance
-          intervalMs={3000}
+          intervalMs={4000}
           pauseOnHover
           showDots
           cardWidth={width}
