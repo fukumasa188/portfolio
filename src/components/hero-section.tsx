@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/badge';
 import { ChevronDown } from 'lucide-react';
 import { useRef } from 'react';
+import { siteConfig } from '@/data/site';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 
@@ -46,14 +47,14 @@ export default function HeroSection() {
           data-hero-animate
           className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter"
         >
-          山田 太郎
+          {siteConfig.name}
         </h1>
 
         <p
           data-hero-animate
           className="text-muted-foreground text-lg md:text-xl max-w-md mx-auto"
         >
-          デザインとテクノロジーの交差点で、美しい体験を創造するクリエイティブデベロッパー。
+          {siteConfig.description}
         </p>
       </div>
 
