@@ -4,10 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
-
-function cn(...classes: Array<string | undefined | null | false>) {
-  return classes.filter(Boolean).join(" ");
-}
+import { cn } from "@/lib/utils";
 
 export type CardStackItem = {
   id: string | number;
@@ -253,7 +250,7 @@ export function CardStack<T extends CardStackItem>({
                     dragConstraints: { left: 0, right: 0 },
                     dragElastic: 0.18,
                     onDragEnd: (
-                      _e: any,
+                      _e: MouseEvent | TouchEvent | PointerEvent,
                       info: { offset: { x: number }; velocity: { x: number } },
                     ) => {
                       if (reduceMotion) return;
