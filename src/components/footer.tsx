@@ -1,4 +1,5 @@
-import { Code2, ExternalLink, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
+import { FaGithub, FaFacebook } from 'react-icons/fa';
 import { siteConfig } from '@/data/site';
 
 export default function Footer() {
@@ -17,7 +18,7 @@ export default function Footer() {
             className="text-muted-foreground hover:text-foreground transition-colors"
             aria-label="GitHub"
           >
-            <Code2 className="w-5 h-5" />
+            <FaGithub className="w-5 h-5" />
           </a>
           <a
             href={siteConfig.social.facebook}
@@ -26,7 +27,7 @@ export default function Footer() {
             className="text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Facebook"
           >
-            <ExternalLink className="w-5 h-5" />
+            <FaFacebook className="w-5 h-5" />
           </a>
         </div>
 
