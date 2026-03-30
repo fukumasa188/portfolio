@@ -14,6 +14,7 @@ export type CardStackItem = {
   href?: string;
   ctaLabel?: string;
   tag?: string;
+  badges?: string[];
 };
 
 export type CardStackProps<T extends CardStackItem> = {
@@ -398,18 +399,34 @@ function DefaultFanCard({ item }: { item: CardStackItem; active: boolean }) {
       </div>
 
       {/* subtle gradient overlay at bottom for text readability */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
       {/* content */}
       <div className="relative z-10 flex h-full flex-col justify-end p-5">
-        <div className="truncate text-lg font-semibold text-white">
-          {item.title}
-        </div>
-        {item.description ? (
-          <div className="mt-1 line-clamp-2 text-sm text-white/80">
-            {item.description}
+        <div className="flex items-end justify-between gap-2">
+          <div>
+            <div className="truncate text-lg font-semibold text-white">
+              {item.title}
+            </div>
+            {item.description ? (
+              <div className="mt-1 text-sm text-white/80">
+                {item.description}
+              </div>
+            ) : null}
           </div>
-        ) : null}
+          {item.badges && item.badges.length > 0 && (
+            <div className="flex flex-wrap justify-end gap-1 shrink-0">
+              {item.badges.map((badge) => (
+                <span
+                  key={badge}
+                  className="rounded-full bg-white/20 backdrop-blur-sm px-2 py-0.5 text-[10px] font-medium text-white"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

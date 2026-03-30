@@ -12,6 +12,7 @@ const cardItems: CardStackItem[] = projects.map((p) => ({
   imageSrc: p.image,
   href: p.url,
   tag: p.category,
+  badges: p.badges,
 }));
 
 function useCardDimensions() {

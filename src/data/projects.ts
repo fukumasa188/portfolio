@@ -12,6 +12,7 @@ export interface Project {
   metrics?: { label: string; value: string }[];
   url?: string;
   tags?: string[];
+  badges?: string[];
 }
 
 export const projects: Project[] = [
@@ -43,6 +44,7 @@ export const projects: Project[] = [
       'フルスタック開発（フロントエンド〜バックエンド〜インフラ）',
       'プロダクト企画・要件定義・UI/UX設計',
     ],
+    badges: ['PO', 'Frontend', 'Backend', 'Design'],
   },
   {
     id: 2,
@@ -72,6 +74,7 @@ export const projects: Project[] = [
       '記憶管理システム（Mem0）の統合',
       'フルスタック開発・インフラ構築',
     ],
+    badges: ['PO', 'Frontend', 'Backend', 'Design'],
   },
   {
     id: 3,
@@ -98,6 +101,7 @@ export const projects: Project[] = [
       'チャット・検索・返信生成の自動化エンジン開発',
     ],
     url: 'https://stellajp.net/',
+    badges: ['PO', 'Frontend', 'Backend'],
   },
   {
     id: 4,
@@ -121,6 +125,7 @@ export const projects: Project[] = [
       { label: '月間GMV最高', value: '1,200万円' },
       { label: '取扱ブランド', value: '10,000+' },
     ],
+    badges: ['PO', 'Frontend', 'Backend', 'Design', 'Marketing'],
   },
   {
     id: 5,
@@ -138,6 +143,7 @@ export const projects: Project[] = [
       '越境ECの決済・物流フローの構築',
       'プロダクト企画・UI/UX設計',
     ],
+    badges: ['PO', 'Frontend', 'Backend', 'Design', 'Marketing'],
   },
   {
     id: 6,
@@ -169,5 +175,66 @@ export const projects: Project[] = [
       'フルスタック開発・運用保守',
     ],
     url: 'https://stellajp.net/',
+    badges: ['PO', 'Frontend', 'Backend', 'Design'],
+  },
+  {
+    id: 7,
+    title: 'Synchro',
+    category: 'SNS',
+    image: '/images/synchro.png',
+    color: '#E879F9',
+    role: 'プロダクトオーナー / 開発',
+    description:
+      '友達と一緒に動画を楽しむ新しいソーシャル体験。リアルタイムで同期した視聴を可能にし、チャット機能を通じて感想を共有できます。',
+    stack: ['Flutter'],
+    tasks: [
+      'リアルタイム同期視聴エンジンの設計・実装',
+      'チャット機能の開発',
+      'モバイルアプリの設計・開発',
+    ],
+    badges: ['PO', 'Frontend', 'Backend', 'Design'],
+  },
+  {
+    id: 8,
+    title: 'EC WORKSPACE',
+    category: 'SaaS',
+    image: '/images/ec-workspace.png',
+    color: '#38BDF8',
+    role: 'プロダクトオーナー / フルスタック開発',
+    period: '2024 - 現在',
+    description:
+      'BtoB向けEC運用自動化のオールインワンSaaS。ECモールの商品登録から受注処理、カスタマーサポートまで、EC運用の業務を効率化。',
+    stack: [
+      'TypeScript',
+      'Next.js',
+      'React.js',
+      'Tailwind CSS',
+      'shadcn/ui',
+      'Supabase',
+      'Vercel',
+    ],
+    tasks: [
+      'プロダクト企画・要件定義・UI/UX設計',
+      'フルスタック開発（フロントエンド〜バックエンド〜インフラ）',
+      'EC運用業務の自動化機能の設計・実装',
+    ],
+    badges: ['PO', 'Frontend', 'Backend', 'Design'],
+  },
+  {
+    id: 9,
+    title: 'Wuu',
+    category: 'EC',
+    image: '/images/wuu.png',
+    color: '#F59E0B',
+    role: 'プロダクトオーナー / 開発',
+    description:
+      'ゲーマー向け通販アプリ。ゲームをたくさんプレイするとポイントが貯まり、お得にお買い物ができる。',
+    stack: ['Flutter'],
+    tasks: [
+      'モバイルアプリの設計・開発',
+      'ポイントシステムの設計・実装',
+      'プロダクト企画・UI/UX設計',
+    ],
+    badges: ['PO', 'Frontend', 'Backend', 'Design'],
   },
 ];
